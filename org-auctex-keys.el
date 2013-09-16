@@ -2,7 +2,25 @@
 
 ;; Copyright (C) 2013 Fabrice Niessen
 
+;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
+;; URL: https://github.com/fniessen/org-auctex-key-bindings
+;; Version: 20130916.2131
+;; Keywords: org mode, latex, auctex, emulation
+
+;; This file is NOT part of GNU Emacs.
+
 ;;; Commentary:
+
+;; This minor modes implements many AUCTeX key bindings in Org documents!
+;; ... a killer feature to ease the conversion of LaTeX users to Org mode.
+;;
+;; To use it, put the following in your Emacs configuration file:
+;;
+;;   (require 'org-auctex-keys)
+;;
+;; and enable it for any Org file with `M-x org-auctex-keys-minor-mode'.
+;;
+;; Credit: Original idea from Denis Bitouzé.
 
 ;;; Code:
 
@@ -117,5 +135,12 @@ to use, as specified by `org-auckeys-font-list'."
 ;; that's it
 
 (provide 'org-auctex-keys)
+
+;; Local Variables:
+;; time-stamp-format: "%:y%02m%02d.%02H%02M"
+;; time-stamp-start: "Version: "
+;; time-stamp-end: "$"
+;; no-byte-compile: t
+;; End:
 
 ;;; org-auctex-keys.el ends here
