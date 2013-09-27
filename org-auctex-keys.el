@@ -4,7 +4,7 @@
 
 ;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
 ;; URL: https://github.com/fniessen/org-auctex-key-bindings
-;; Version: 20130927.0956
+;; Version: 20130927.1553
 ;; Keywords: org mode, latex, auctex, key bindings, shortcuts, emulation
 
 ;; This file is NOT part of GNU Emacs.
@@ -46,7 +46,9 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
 (easy-menu-define org-auctex-keys-minor-mode-menu org-auctex-keys-minor-mode-map
   "Menu used when Org AUCTeX Keys minor mode is active."
   '("AUCKeys"
+    ["Section" org-insert-heading]
     ("Insert Font"
+     ["Emphasize"  (org-auckeys-font nil ?\C-e) :keys "C-c C-f C-e"]
      ["Bold"       (org-auckeys-font nil ?\C-b) :keys "C-c C-f C-b"]
      ["Typewriter" (org-auckeys-font nil ?\C-t) :keys "C-c C-f C-t"]
      ["Italic"     (org-auckeys-font nil ?\C-i) :keys "C-c C-f C-i"])
@@ -54,7 +56,8 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
     ))
 
 (defvar org-auckeys-font-list
-  '((?\C-b "*" "*")
+  '((?\C-e "/" "/")
+    (?\C-b "*" "*")
     (?\C-i "/" "/")
     (?\C-t "=" "="))
   "Font commands used with org-auckeys.")
