@@ -1,0 +1,56 @@
+#+AUTHOR:    Fabrice Niessen
+#+EMAIL:     (concat "fniessen" at-sign "pirilampo.org")
+#+DATE:      2012-06-22
+#+Time-stamp: <2013-09-27 Fri 13:05>
+#+DESCRIPTION: Implement many AUCTeX key bindings for Org mode documents
+#+KEYWORDS:  org mode, latex, auctex, key bindings, shortcuts, emulation
+#+LANGUAGE:  en
+
+* org-auctex-key-bindings
+
+Implement many AUCTeX key bindings for Org mode documents.
+
+** Download
+
+Get the full Git repository at
+https://github.com/fniessen/org-auctex-key-bindings using the following
+command:
+
+#+BEGIN_SRC sh
+git clone https://github.com/fniessen/org-auctex-key-bindings.git
+#+END_SRC
+
+** Installation
+
+- Install [[https://github.com/fniessen/org-auctex-key-bindings][org-auctex-key-bindings]]:
+
+  #+BEGIN_SRC emacs-lisp
+  ;; make sure `org-auctex-key-bindings.el' is in your `load-path'
+  (add-to-list 'load-path "/path/to/org-auctex-key-bindings")
+
+  ;; require it as normal
+  (require 'org-auctex-keys)
+  #+END_SRC
+
+- Restart Emacs.
+
+** AUCTeX keyboard shortcuts
+
+Save time and boost your productivity in Org documents with AUCTeX keyboard
+shortcuts.
+
+*** Shortcuts for Org mode
+
+Currently implemented:
+
+| Shortcut    | What it runs                  |
+|-------------+-------------------------------|
+| =C-c C-s=     | =org-insert-heading=            |
+| =C-c C-f C-b= | =org-auckeys-font= (bold)       |
+| =C-c C-f C-t= | =org-auckeys-font= (typewriter) |
+| =C-c C-f C-i= | =org-auckeys-font= (italic)     |
+| =C-c C-e=     | =org-auckeys-environment=       |
+
+** License
+
+Copyright (C) 2013 Fabrice Niessen
