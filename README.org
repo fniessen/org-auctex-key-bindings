@@ -1,7 +1,7 @@
 #+AUTHOR:    Fabrice Niessen
 #+EMAIL:     (concat "fniessen" at-sign "pirilampo.org")
 #+DATE:      2012-06-22
-#+Time-stamp: <2013-09-27 Fri 13:10>
+#+Time-stamp: <2013-09-27 Fri 13:15>
 #+DESCRIPTION: Implement many AUCTeX key bindings for Org mode documents
 #+KEYWORDS:  org mode, latex, auctex, key bindings, shortcuts, emulation
 #+LANGUAGE:  en
@@ -51,7 +51,7 @@ Calling the same command another time will disable the =AUCKeys= minor mode.
 Save time and boost your productivity in Org documents with AUCTeX keyboard
 shortcuts.
 
-*** Shortcuts for Org mode
+*** Enabled AUCTeX shortcuts for Org mode
 
 Currently implemented:
 
@@ -62,6 +62,16 @@ Currently implemented:
 | =C-c C-f C-t= | =org-auckeys-font= (typewriter) |
 | =C-c C-f C-i= | =org-auckeys-font= (italic)     |
 | =C-c C-e=     | =org-auckeys-environment=       |
+
+*** Disabled Org mode shortcuts
+
+As there are conflicts between AUCTeX and Org key bindings, whenever this minor
+mode is enabled, you'll temporarily loose the standard behavior of:
+
+| Shortcut | What it ran                    |
+|----------+--------------------------------|
+| =C-c C-s=  | =org-schedule=                   |
+| =C-c C-f=  | =org-forward-heading-same-level= |
 
 ** License
 
