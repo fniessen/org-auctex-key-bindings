@@ -1,7 +1,7 @@
 #+AUTHOR:    Fabrice Niessen
 #+EMAIL:     (concat "fniessen" at-sign "pirilampo.org")
 #+DATE:      2012-06-22
-#+Time-stamp: <2013-09-27 Fri 13:05>
+#+Time-stamp: <2013-09-27 Fri 13:10>
 #+DESCRIPTION: Implement many AUCTeX key bindings for Org mode documents
 #+KEYWORDS:  org mode, latex, auctex, key bindings, shortcuts, emulation
 #+LANGUAGE:  en
@@ -33,6 +33,18 @@ git clone https://github.com/fniessen/org-auctex-key-bindings.git
   #+END_SRC
 
 - Restart Emacs.
+
+** Usage
+
+Whenever you want to use AUCTeX key bindings inside your Org document, press:
+
+#+begin_src emacs-lisp
+M-x org-auctex-keys-minor-mode
+#+end_src
+
+You should now see =AUCKeys= in the list of minor modes, in your mode line.
+
+Calling the same command another time will disable the =AUCKeys= minor mode.
 
 ** AUCTeX keyboard shortcuts
 
