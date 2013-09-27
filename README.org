@@ -1,7 +1,7 @@
 #+AUTHOR:    Fabrice Niessen
 #+EMAIL:     (concat "fniessen" at-sign "pirilampo.org")
 #+DATE:      2012-06-22
-#+Time-stamp: <2013-09-27 Fri 13:15>
+#+Time-stamp: <2013-09-27 Fri 13:18>
 #+DESCRIPTION: Implement many AUCTeX key bindings for Org mode documents
 #+KEYWORDS:  org mode, latex, auctex, key bindings, shortcuts, emulation
 #+LANGUAGE:  en
@@ -62,6 +62,9 @@ Currently implemented:
 | =C-c C-f C-t= | =org-auckeys-font= (typewriter) |
 | =C-c C-f C-i= | =org-auckeys-font= (italic)     |
 | =C-c C-e=     | =org-auckeys-environment=       |
+
+As I'm not a heavy user of AUCTeX, I don't know which other AUCTeX keys are
+important to be offered by this minor mode. Please tell me!
 
 *** Disabled Org mode shortcuts
 
