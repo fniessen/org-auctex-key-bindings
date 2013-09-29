@@ -1,7 +1,7 @@
 #+AUTHOR:    Fabrice Niessen
 #+EMAIL:     (concat "fniessen" at-sign "pirilampo.org")
 #+DATE:      2012-06-22
-#+Time-stamp: <2013-09-27 Fri 15:52>
+#+Time-stamp: <2013-09-29 Sun 20:34>
 #+DESCRIPTION: Implement many AUCTeX key bindings for Org mode documents
 #+KEYWORDS:  org mode, latex, auctex, key bindings, shortcuts, emulation
 #+LANGUAGE:  en
@@ -55,14 +55,16 @@ shortcuts.
 
 Currently implemented:
 
-| Shortcut    | What it runs                  |
-|-------------+-------------------------------|
-| =C-c C-s=     | =org-insert-heading=            |
-| =C-c C-f C-e= | =org-auckeys-font= (emphasize)  |
-| =C-c C-f C-b= | =org-auckeys-font= (bold)       |
-| =C-c C-f C-t= | =org-auckeys-font= (typewriter) |
-| =C-c C-f C-i= | =org-auckeys-font= (italic)     |
-| =C-c C-e=     | =org-auckeys-environment=       |
+| Shortcut    | What it runs                       |
+|-------------+------------------------------------|
+| =C-c C-s=     | =org-insert-heading=                 |
+| =C-c C-j=     | =org-insert-heading-respect-content= |
+| =C-c C-f C-e= | =org-auckeys-font= (emphasize)       |
+| =C-c C-f C-b= | =org-auckeys-font= (bold)            |
+| =C-c C-f C-t= | =org-auckeys-font= (typewriter)      |
+| =C-c C-f C-i= | =org-auckeys-font= (italic)          |
+| =C-c C-e=     | =org-auckeys-environment=            |
+| =C-c C-c=     | =org-export-dispatch=                |
 
 As I'm not a heavy user of AUCTeX, I don't know which other AUCTeX keys are
 important to be offered by this minor mode. Please tell me!
@@ -75,7 +77,10 @@ mode is enabled, you'll temporarily loose the standard behavior of:
 | Shortcut | What it ran                    |
 |----------+--------------------------------|
 | =C-c C-s=  | =org-schedule=                   |
+| =C-c C-j=  | =org-goto=                       |
 | =C-c C-f=  | =org-forward-heading-same-level= |
+| =C-c C-e=  | =org-export-dispatch=            |
+| =C-c C-c=  | =org-ctrl-c-ctrl-c=              |
 
 ** License
 

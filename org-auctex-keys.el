@@ -4,10 +4,23 @@
 
 ;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
 ;; URL: https://github.com/fniessen/org-auctex-key-bindings
-;; Version: 20130927.1553
+;; Version: 20130929.2030
 ;; Keywords: org mode, latex, auctex, key bindings, shortcuts, emulation
 
 ;; This file is NOT part of GNU Emacs.
+
+;; This file is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this file.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -38,8 +51,10 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
 (defvar org-auctex-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "C-c C-s") 'org-insert-heading)
+    (define-key map (kbd "C-c C-j") 'org-insert-heading-respect-content)
     (define-key map (kbd "C-c C-f") 'org-auckeys-font)
     (define-key map (kbd "C-c C-e") 'org-auckeys-environment)
+    (define-key map (kbd "C-c C-c") 'org-export-dispatch)
     map)
   "Keymap for Org AUCTeX Keys minor mode.")
 
@@ -47,12 +62,14 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
   "Menu used when Org AUCTeX Keys minor mode is active."
   '("AUCKeys"
     ["Section" org-insert-heading]
+    ["Insert Item" org-insert-heading-respect-content]
     ("Insert Font"
      ["Emphasize"  (org-auckeys-font nil ?\C-e) :keys "C-c C-f C-e"]
      ["Bold"       (org-auckeys-font nil ?\C-b) :keys "C-c C-f C-b"]
      ["Typewriter" (org-auckeys-font nil ?\C-t) :keys "C-c C-f C-t"]
      ["Italic"     (org-auckeys-font nil ?\C-i) :keys "C-c C-f C-i"])
-    ["Insert list item" org-auckeys-environment]
+    ["Insert environment" org-auckeys-environment]
+    ["Export..." org-export-dispatch]
     ))
 
 (defvar org-auckeys-font-list
@@ -129,10 +146,11 @@ to use, as specified by `org-auckeys-font-list'."
            (save-excursion
              (insert after))))))
 
-(defun org-auckeys-environment ()
-  "Insert list item syntax at point."
-  (interactive)
-  (insert "- "))
+(defun org-auckeys-environment (env)
+  "Insert environment syntax at point."
+  (interactive "sEnvironment: ")
+  (insert (format "#+begin_%s\n\n#+end_%s\n" env env))
+  (forward-line -2))
 
 ;;---------------------------------------------------------------------------
 ;; that's it
