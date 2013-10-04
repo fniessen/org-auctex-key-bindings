@@ -1,7 +1,7 @@
 #+AUTHOR:    Fabrice Niessen
 #+EMAIL:     (concat "fniessen" at-sign "pirilampo.org")
 #+DATE:      2012-06-22
-#+Time-stamp: <2013-09-29 Sun 20:34>
+#+Time-stamp: <2013-10-04 Fri 13:58>
 #+DESCRIPTION: Implement many AUCTeX key bindings for Org mode documents
 #+KEYWORDS:  org mode, latex, auctex, key bindings, shortcuts, emulation
 #+LANGUAGE:  en
@@ -45,6 +45,13 @@ M-x org-auctex-keys-minor-mode
 You should now see =AUCKeys= in the list of minor modes, in your mode line.
 
 Calling the same command another time will disable the =AUCKeys= minor mode.
+
+To get it automagically turned on in every Org buffer, add this in your Emacs
+configuration file:
+
+#+begin_src emacs-lisp
+(add-hook 'org-mode-hook 'org-auctex-keys-minor-mode)
+#+end_src
 
 ** AUCTeX keyboard shortcuts
 
