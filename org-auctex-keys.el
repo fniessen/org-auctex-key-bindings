@@ -4,7 +4,7 @@
 
 ;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
 ;; URL: https://github.com/fniessen/org-auctex-key-bindings
-;; Version: 20131001.1516
+;; Version: 20131004.1354
 ;; Keywords: org mode, latex, auctex, key bindings, shortcuts, emulation
 
 ;; This file is NOT part of GNU Emacs.
@@ -33,7 +33,14 @@
 ;;
 ;; and enable it for any Org file with `M-x org-auctex-keys-minor-mode'.
 ;;
+;; To get it automagically turned on in every Org buffer, add this in your
+;; Emacs configuration file:
+;;
+;;   (add-hook 'org-mode-hook 'org-auctex-keys-minor-mode)
+;;
 ;; Credit: Original idea from Denis Bitouzé.
+;;
+;; Thanks to Nicolas Richard for a patch of `org-auckeys-environment'!
 
 ;;; Code:
 
@@ -146,33 +153,38 @@ to use, as specified by `org-auckeys-font-list'."
            (save-excursion
              (insert after))))))
 
-(defun org-auckeys-completing-read (prompt choices &optional printfun &rest other)
-  "CHOICES can be a list of any lisp objects. PRINTFUN is used to
-show them in the minibuffer prompt -- by default this is
+(defun org-auckeys-completing-read (prompt collection &optional print-fun &rest other)
+  "Read a string in the minibuffer, with completion.
+
+COLLECTION can be any list of Lisp objects.
+
+PRINT-FUN is used to show them in the minibuffer prompt -- by default, this is
 `prin1-to-string'."
-  (let ((printfun (or printfun #'prin1-to-string))
-        (choices (mapcar
-                  (lambda (choice)
-                    (cons (funcall printfun choice) choice))
-                  choices)))
+  (let ((print-fun (or print-fun #'prin1-to-string))
+        (collection (mapcar
+                     (lambda (choice)
+                       (cons (funcall print-fun choice) choice))
+                     collection)))
     (cdr
      (assoc
-      (apply #'completing-read prompt (mapcar #'car choices) other)
-      choices))))
+      (apply #'completing-read prompt (mapcar #'car collection) other)
+      collection))))
 
 (defun org-auckeys-environment (template)
-  "Insert TEMPLATE at point. Interactively, TEMPLATE is an
-element from `org-structure-template-alist'"
-  (interactive (list
-                (completing-read-with-printfun
-                 "Environment: "
-                 org-structure-template-alist
-                 (lambda (cell)
-                   (let ((template (cadr cell)))
-                     (if (string-match "\\`[^ \n]+" template)
-                         (match-string 0 template)
-                       template))))))
-  (org-complete-expand-structure-template (point) template))
+  "Insert TEMPLATE at point.
+
+Interactively, TEMPLATE is an element from `org-structure-template-alist'."
+  (interactive (list (org-auckeys-completing-read
+                      "Environment: "
+                      org-structure-template-alist
+                      (lambda (cell)
+                        (let ((template (cadr cell)))
+                          (if (string-match "\\`[^ \n]+" template)
+                              (match-string 0 template)
+                            template))))))
+  (if template
+      (org-complete-expand-structure-template (point) template)
+    (message "Template not found in `org-structure-template-alist'")))
 
 ;;---------------------------------------------------------------------------
 ;; that's it
