@@ -1,14 +1,15 @@
 #+AUTHOR:    Fabrice Niessen
 #+EMAIL:     (concat "fniessen" at-sign "pirilampo.org")
 #+DATE:      2012-06-22
-#+Time-stamp: <2013-10-04 Fri 13:58>
+#+Time-stamp: <2013-10-12 Sat 09:46>
 #+DESCRIPTION: Implement many AUCTeX key bindings for Org mode documents
 #+KEYWORDS:  org mode, latex, auctex, key bindings, shortcuts, emulation
 #+LANGUAGE:  en
 
 * org-auctex-key-bindings
 
-Implement many AUCTeX key bindings for Org mode documents.
+Implement many AUCTeX key bindings for Org mode documents, by giving them an
+"Org equivalent" or Org-like effect.
 
 ** Download
 
@@ -36,7 +37,8 @@ git clone https://github.com/fniessen/org-auctex-key-bindings.git
 
 ** Usage
 
-Whenever you want to use AUCTeX key bindings inside your Org document, press:
+Whenever you want to use AUCTeX key bindings inside your Org document, press
+=C-+= or type:
 
 #+begin_src emacs-lisp
 M-x org-auctex-keys-minor-mode
@@ -44,9 +46,10 @@ M-x org-auctex-keys-minor-mode
 
 You should now see =AUCKeys= in the list of minor modes, in your mode line.
 
-Calling the same command another time will disable the =AUCKeys= minor mode.
+Calling the same command another time (via =C-+= or
+=M-x org-auctex-keys-minor-mode=) will disable the =AUCKeys= minor mode.
 
-To get it automagically turned on in every Org buffer, add this in your Emacs
+To get it automatically turned on in every Org buffer, add this in your Emacs
 configuration file:
 
 #+begin_src emacs-lisp
@@ -92,3 +95,5 @@ mode is enabled, you'll temporarily loose the standard behavior of:
 ** License
 
 Copyright (C) 2013 Fabrice Niessen
+
+#  LocalWords:  Fabrice Niessen Org org AUCTeX auctex

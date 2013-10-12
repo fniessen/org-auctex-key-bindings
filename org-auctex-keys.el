@@ -4,7 +4,7 @@
 
 ;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
 ;; URL: https://github.com/fniessen/org-auctex-key-bindings
-;; Version: 20131004.1354
+;; Version: 20131012.0944
 ;; Keywords: org mode, latex, auctex, key bindings, shortcuts, emulation
 
 ;; This file is NOT part of GNU Emacs.
@@ -43,6 +43,8 @@
 ;; Thanks to Nicolas Richard for a patch of `org-auckeys-environment'!
 
 ;;; Code:
+
+(require 'org)
 
 ;;---------------------------------------------------------------------------
 ;; user-configurable variables
@@ -98,8 +100,8 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
   :lighter org-auckeys-mode-text
   :keymap org-auctex-keys-minor-mode-map
   (if org-auctex-keys-minor-mode
-      (message "Org AUCTeX Keys minor mode ENABLED")
-    (message "Org AUCTeX Keys minor mode DISABLED")))
+      (message "Org AUCTeX Keys minor mode enabled")
+    (message "Org AUCTeX Keys minor mode disabled")))
 
 ;;;###autoload
 (defun turn-off-org-auctex-keys ()
@@ -112,6 +114,19 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
   "Unconditionally turn off `org-auctex-keys-minor-mode'."
   (org-auctex-keys-minor-mode 1))
 
+;;;###autoload
+(defun toggle-org-auctex-keys ()
+  "Toggle AUCKeys on/off.
+If AUCKeys is enabled, turn it off.  Otherwise, turn it on."
+  (interactive)
+  (if org-auctex-keys-minor-mode
+      (turn-off-org-auctex-keys)
+    (turn-on-org-auctex-keys)))
+
+;; make `C-+' toggle AUCKeys on/off
+(define-key org-mode-map
+  (kbd "C-+") 'toggle-org-auctex-keys)
+
 (defun org-auckeys-describe-font-entry (entry)
   "A textual description of an ENTRY in `org-auckeys-font-list'."
   (concat (format "%16s  " (key-description (char-to-string (nth 0 entry))))
@@ -121,6 +136,7 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
 
 (defun org-auckeys-font (replace what)
   "Insert template for font change command.
+
 If REPLACE is not nil, replace current font.  WHAT determines the font
 to use, as specified by `org-auckeys-font-list'."
   (interactive "*P\nc")
