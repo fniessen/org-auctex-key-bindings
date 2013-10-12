@@ -4,7 +4,7 @@
 
 ;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
 ;; URL: https://github.com/fniessen/org-auctex-key-bindings
-;; Version: 20131012.1039
+;; Version: 20131012.1411
 ;; Keywords: org mode, latex, auctex, key bindings, shortcuts, emulation
 
 ;; This file is NOT part of GNU Emacs.
@@ -203,7 +203,7 @@ Interactively, TEMPLATE is an element from `org-structure-template-alist'."
     (message "Template not found in `org-structure-template-alist'")))
 
 (defun org-auckeys-export-dispatch ()
-  "Save buffer, execute/tangle code blocks, and export to HTML/PDF."
+  "Export to PDF or open the PDF file, depending on whether the file is up to date."
   (interactive)
   (let* ((orgfile (buffer-file-name))
          (pdffile (concat (file-name-base orgfile) ".pdf")))
