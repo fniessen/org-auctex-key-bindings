@@ -12,11 +12,14 @@ Added =C-+= to toggle AUCKeys on/off.
 So, =C-c C-s= will insert a new heading when AUCKeys in enabled, but =C-u C-c C-s=
 would call the standard Org =C-c C-s= function.
 
-** TODO Make a AUCTeX-like export dispatcher
+** DONE Make a AUCTeX-like export dispatcher
+   :LOGBOOK:
+   - State "TODO"        ->  "DONE"       [2013-10-12 Sat 10:34]
+   :END:
 
 Just two commands would be sufficient:
 
 - Export, if no PDF or if PDF is older than Org source file
 - View, if PDF is newer than Org source file
 
-And =C-u C-c C-e= would call the original export dispatcher.
+(And =C-u C-c C-e= would call the original export dispatcher.)

@@ -4,7 +4,7 @@
 
 ;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
 ;; URL: https://github.com/fniessen/org-auctex-key-bindings
-;; Version: 20131012.0944
+;; Version: 20131012.1039
 ;; Keywords: org mode, latex, auctex, key bindings, shortcuts, emulation
 
 ;; This file is NOT part of GNU Emacs.
@@ -63,7 +63,7 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
     (define-key map (kbd "C-c C-j") 'org-insert-heading-respect-content)
     (define-key map (kbd "C-c C-f") 'org-auckeys-font)
     (define-key map (kbd "C-c C-e") 'org-auckeys-environment)
-    (define-key map (kbd "C-c C-c") 'org-export-dispatch)
+    (define-key map (kbd "C-c C-c") 'org-auckeys-export-dispatch)
     map)
   "Keymap for Org AUCTeX Keys minor mode.")
 
@@ -201,6 +201,27 @@ Interactively, TEMPLATE is an element from `org-structure-template-alist'."
   (if template
       (org-complete-expand-structure-template (point) template)
     (message "Template not found in `org-structure-template-alist'")))
+
+(defun org-auckeys-export-dispatch ()
+  "Save buffer, execute/tangle code blocks, and export to HTML/PDF."
+  (interactive)
+  (let* ((orgfile (buffer-file-name))
+         (pdffile (concat (file-name-base orgfile) ".pdf")))
+
+    ;; ;; XXX query to save?
+    ;; (save-buffer)
+
+    (cond ((or (not (file-exists-p pdffile))
+               (file-newer-than-file-p orgfile pdffile))
+           (message "Command: Export to LaTeX")
+           (sit-for 0.5)
+           (org-latex-export-to-pdf)
+           (message "Export to LaTeX: done"))
+          (t
+           (message "Command: View")
+           (sit-for 0.5)
+           (org-open-file pdffile)
+           (message "")))))
 
 ;;---------------------------------------------------------------------------
 ;; that's it
