@@ -4,7 +4,7 @@
 
 ;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
 ;; URL: https://github.com/fniessen/org-auctex-key-bindings
-;; Version: 20131012.1411
+;; Version: 20131021.2150
 ;; Keywords: org mode, latex, auctex, key bindings, shortcuts, emulation
 
 ;; This file is NOT part of GNU Emacs.
@@ -49,6 +49,10 @@
 ;;---------------------------------------------------------------------------
 ;; user-configurable variables
 
+(defcustom org-auckeys-save-query t
+  "*If non-nil, ask user for permission to save files before exporting."
+  :group 'Org-AUCTeX-keys
+  :type 'boolean)
 
 ;;---------------------------------------------------------------------------
 ;; internal variables
@@ -59,8 +63,8 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
 
 (defvar org-auctex-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "C-c C-s") 'org-insert-heading)
-    (define-key map (kbd "C-c C-j") 'org-insert-heading-respect-content)
+    (define-key map (kbd "C-c C-s") 'org-auckeys-insert-heading)
+    (define-key map (kbd "C-c C-j") 'org-auckeys-insert-heading-respect-content)
     (define-key map (kbd "C-c C-f") 'org-auckeys-font)
     (define-key map (kbd "C-c C-e") 'org-auckeys-environment)
     (define-key map (kbd "C-c C-c") 'org-auckeys-export-dispatch)
@@ -70,15 +74,15 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
 (easy-menu-define org-auctex-keys-minor-mode-menu org-auctex-keys-minor-mode-map
   "Menu used when Org AUCTeX Keys minor mode is active."
   '("AUCKeys"
-    ["Section" org-insert-heading]
-    ["Insert Item" org-insert-heading-respect-content]
+    ["Section" org-auckeys-insert-heading]
+    ["Insert Item" org-auckeys-insert-heading-respect-content]
     ("Insert Font"
-     ["Emphasize"  (org-auckeys-font nil ?\C-e) :keys "C-c C-f C-e"]
-     ["Bold"       (org-auckeys-font nil ?\C-b) :keys "C-c C-f C-b"]
-     ["Typewriter" (org-auckeys-font nil ?\C-t) :keys "C-c C-f C-t"]
-     ["Italic"     (org-auckeys-font nil ?\C-i) :keys "C-c C-f C-i"])
+     ["Emphasize"  (org-auckeys-font ?\C-e) :keys "C-c C-f C-e"]
+     ["Bold"       (org-auckeys-font ?\C-b) :keys "C-c C-f C-b"]
+     ["Typewriter" (org-auckeys-font ?\C-t) :keys "C-c C-f C-t"]
+     ["Italic"     (org-auckeys-font ?\C-i) :keys "C-c C-f C-i"])
     ["Insert environment" org-auckeys-environment]
-    ["Export..." org-export-dispatch]
+    ["Export to LaTeX / View" org-auckeys-export-dispatch]
     ))
 
 (defvar org-auckeys-font-list
@@ -127,6 +131,26 @@ If AUCKeys is enabled, turn it off.  Otherwise, turn it on."
 (define-key org-mode-map
   (kbd "C-+") 'toggle-org-auctex-keys)
 
+(defun org-auckeys-insert-heading (&optional arg)
+  "Insert a new heading or item with same depth at point.
+
+With a prefix argument, use the standard command bound to `C-c C-s'."
+  (interactive "p")
+  (if (= arg 1)
+      (org-insert-heading)
+    ;; original function
+    (funcall 'org-schedule (/ arg 4))))
+
+(defun org-auckeys-insert-heading-respect-content (&optional arg)
+  "Insert heading with `org-insert-heading-respect-content' set to t.
+
+With a prefix argument, use the standard command bound to `C-c C-j'."
+  (interactive "p")
+  (if (= arg 1)
+      (org-insert-heading-respect-content)
+    ;; original function
+    (funcall 'org-goto (/ arg 4))))
+
 (defun org-auckeys-describe-font-entry (entry)
   "A textual description of an ENTRY in `org-auckeys-font-list'."
   (concat (format "%16s  " (key-description (char-to-string (nth 0 entry))))
@@ -134,40 +158,42 @@ If AUCKeys is enabled, turn it off.  Otherwise, turn it on."
                   (nth 1 entry)
                   (nth 2 entry))))
 
-(defun org-auckeys-font (replace what)
+(defun org-auckeys-font (what &optional arg)
   "Insert template for font change command.
 
-If REPLACE is not nil, replace current font.  WHAT determines the font
-to use, as specified by `org-auckeys-font-list'."
-  (interactive "*P\nc")
+WHAT determines the font to use, as specified by `org-auckeys-font-list'.
+
+With a prefix argument, use the standard command bound to `C-c C-f'."
+  (interactive "*c\np")
   (let* ((entry (assoc what org-auckeys-font-list))
          (before (nth 1 entry))
          (after (nth 2 entry)))
-    (cond ((null entry)
-           (let ((help (concat
-                        "Font list:   "
-                        "KEY        TEXTFONT\n\n"
-                        (mapconcat 'org-auckeys-describe-font-entry
-                                   org-auckeys-font-list "\n"))))
-             (with-output-to-temp-buffer "*Help*"
-               (set-buffer "*Help*")
-               (insert help))))
-          ;; (replace
-          ;;  (funcall org-auckeys-font-replace-function before after))
-          ((region-active-p)
-           (save-excursion
-             (cond ((> (mark) (point))
-                    (insert before)
-                    (goto-char (mark))
-                    (insert after))
-                   (t
-                    (insert after)
-                    (goto-char (mark))
-                    (insert before)))))
-          (t
-           (insert before)
-           (save-excursion
-             (insert after))))))
+    (if (= arg 1)
+        (cond ((null entry)
+               (let ((help (concat
+                            "Font list:   "
+                            "KEY        TEXTFONT\n\n"
+                            (mapconcat 'org-auckeys-describe-font-entry
+                                       org-auckeys-font-list "\n"))))
+                 (with-output-to-temp-buffer "*Help*"
+                   (set-buffer "*Help*")
+                   (insert help))))
+              ((region-active-p)
+               (save-excursion
+                 (cond ((> (mark) (point))
+                        (insert before)
+                        (goto-char (mark))
+                        (insert after))
+                       (t
+                        (insert after)
+                        (goto-char (mark))
+                        (insert before)))))
+              (t
+               (insert before)
+               (save-excursion
+                 (insert after))))
+      ;; original function
+      (funcall 'org-forward-heading-same-level (/ arg 4)))))
 
 (defun org-auckeys-completing-read (prompt collection &optional print-fun &rest other)
   "Read a string in the minibuffer, with completion.
@@ -186,42 +212,62 @@ PRINT-FUN is used to show them in the minibuffer prompt -- by default, this is
       (apply #'completing-read prompt (mapcar #'car collection) other)
       collection))))
 
-(defun org-auckeys-environment (template)
+(defun org-auckeys-environment (&optional arg)
   "Insert TEMPLATE at point.
 
-Interactively, TEMPLATE is an element from `org-structure-template-alist'."
-  (interactive (list (org-auckeys-completing-read
-                      "Environment: "
-                      org-structure-template-alist
-                      (lambda (cell)
-                        (let ((template (cadr cell)))
-                          (if (string-match "\\`[^ \n]+" template)
-                              (match-string 0 template)
-                            template))))))
-  (if template
-      (org-complete-expand-structure-template (point) template)
-    (message "Template not found in `org-structure-template-alist'")))
+Interactively, TEMPLATE is an element from `org-structure-template-alist'.
 
-(defun org-auckeys-export-dispatch ()
-  "Export to PDF or open the PDF file, depending on whether the file is up to date."
-  (interactive)
+With a prefix argument, use the standard command bound to `C-c C-e'."
+  (interactive "p")
+  (if (= arg 1)
+      (let ((template
+             (org-auckeys-completing-read
+              "Environment: "
+              org-structure-template-alist
+              (lambda (cell)
+                (let ((template (cadr cell)))
+                  (if (string-match "\\`[^ \n]+" template)
+                      (match-string 0 template)
+                    template))))))
+        (if template
+            (org-complete-expand-structure-template (point) template)
+          (message "Template not found in `org-structure-template-alist'")))
+    ;; original function
+    (funcall 'org-export-dispatch (/ arg 4))))
+
+(defun org-auckeys-export-dispatch (&optional arg)
+  "Export to PDF or open the PDF file, depending on whether the file is up to date.
+
+With a prefix argument, use the standard command bound to `C-c C-c'."
+  (interactive "p")
   (let* ((orgfile (buffer-file-name))
          (pdffile (concat (file-name-base orgfile) ".pdf")))
-
-    ;; ;; XXX query to save?
-    ;; (save-buffer)
-
-    (cond ((or (not (file-exists-p pdffile))
-               (file-newer-than-file-p orgfile pdffile))
-           (message "Command: Export to LaTeX")
-           (sit-for 0.5)
-           (org-latex-export-to-pdf)
-           (message "Export to LaTeX: done"))
-          (t
-           (message "Command: View")
-           (sit-for 0.5)
-           (org-open-file pdffile)
-           (message "")))))
+    (if (= arg 1)
+        (progn
+          ;; save buffer
+          (and (buffer-modified-p)
+               (or (not org-auckeys-save-query)
+                   (y-or-n-p (concat "Save file " orgfile "? ")))
+               (save-excursion
+                 (save-buffer)))
+          ;; export or open
+          (cond ((or (not (file-exists-p pdffile))
+                     (file-newer-than-file-p orgfile pdffile))
+                 (message "Command: Export to LaTeX/PDF")
+                 (sit-for 0.5)
+                 (when (file-exists-p pdffile)
+                   (delete-file pdffile)) ; Avoid false message "All targets are
+                                          ; up-to-date" (from Latexmk) when PDF
+                                          ; file is still open in Acrobat Reader!
+                 (org-latex-export-to-pdf)
+                 (message "Export to LaTeX/PDF: Process completed."))
+                (t
+                 (message "Command: View")
+                 (sit-for 0.5)
+                 (org-open-file pdffile)
+                 (message ""))))
+      ;; original function
+      (funcall 'org-ctrl-c-ctrl-c (/ arg 4)))))
 
 ;;---------------------------------------------------------------------------
 ;; that's it
