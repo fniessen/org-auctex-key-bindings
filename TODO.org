@@ -7,10 +7,15 @@
 
 Added =C-+= to toggle AUCKeys on/off.
 
-** TODO Re-enable default Org key bindings with =C-u=
+** DONE Re-enable default Org key bindings with =C-u=
+   :LOGBOOK:
+   - State "TODO"        ->  "DONE"       [2013-10-21 Mon 21:55]
+   :END:
 
 So, =C-c C-s= will insert a new heading when AUCKeys in enabled, but =C-u C-c C-s=
 would call the standard Org =C-c C-s= function.
+
+See http://stackoverflow.com/questions/19338494/how-to-call-original-function-with-one-less-c-u
 
 ** DONE Make a AUCTeX-like export dispatcher
    :LOGBOOK:
