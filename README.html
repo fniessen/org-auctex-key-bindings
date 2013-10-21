@@ -7,7 +7,7 @@
   <meta name="generator" content=
   "HTML Tidy for Cygwin (vers 1st September 2004), see www.w3.org" />
 
-  <title>README</title><!-- 2013-10-12 Sat 09:47 -->
+  <title>README</title><!-- 2013-10-21 Mon 22:28 -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="generator" content="Org-mode" />
   <meta name="author" content="Fabrice Niessen" />
@@ -177,14 +177,14 @@ M-x org-auctex-keys-minor-mode
                 <tr>
                   <td class="left"><code>C-c C-s</code></td>
 
-                  <td class="left"><code>org-insert-heading</code></td>
+                  <td class="left"><code>org-auckeys-insert-heading</code></td>
                 </tr>
 
                 <tr>
                   <td class="left"><code>C-c C-j</code></td>
 
                   <td class="left">
-                  <code>org-insert-heading-respect-content</code></td>
+                  <code>org-auckeys-insert-heading-respect-content</code></td>
                 </tr>
 
                 <tr>
@@ -222,7 +222,8 @@ M-x org-auctex-keys-minor-mode
                 <tr>
                   <td class="left"><code>C-c C-c</code></td>
 
-                  <td class="left"><code>org-export-dispatch</code></td>
+                  <td class="left">
+                  <code>org-auckeys-export-dispatch</code></td>
                 </tr>
               </tbody>
             </table>
@@ -290,6 +291,34 @@ M-x org-auctex-keys-minor-mode
                 </tr>
               </tbody>
             </table>
+
+            <p>Though, you can easily regain them — without leaving
+            <code>org-auctex-keys</code> — by prefixing your keys with one
+            <code>C-u</code>. That will call the standard Org command without
+            the <code>C-u</code> prefix.</p>
+
+            <p>In fact, it calls the standard Org command with one less
+            <code>C-u</code> prefix; so:</p>
+
+            <ul class="org-ul">
+              <li><code>C-u C-c C-s</code> calls the original
+              <code>org-schedule</code>,</li>
+
+              <li><code>C-u C-u C-c C-s</code> calls the original
+              <code>org-schedule</code> with <b>one</b> universal prefix
+              argument,</li>
+
+              <li><code>C-u C-u C-u C-c C-s</code> calls the original
+              <code>org-schedule</code> with <b>two</b> universal prefix
+              arguments,</li>
+
+              <li>etc. (provided it makes sense)</li>
+            </ul>
+
+            <p>Another way to access a disabled Org mode shortcut is to disable
+            <code>org-auctex-keys</code> temporarily, do what you want, and
+            re-enable it; that is, press <code>C-+ C-c C-s C-+</code> to call
+            the original <code>org-schedule</code>.</p>
           </div>
         </div>
       </div>
