@@ -1,7 +1,7 @@
 #+AUTHOR:    Fabrice Niessen
 #+EMAIL:     (concat "fniessen" at-sign "pirilampo.org")
 #+DATE:      2012-06-22
-#+Time-stamp: <2013-10-21 Mon 22:28>
+#+Time-stamp: <2013-10-22 Tue 09:22>
 #+DESCRIPTION: Implement many AUCTeX key bindings for Org mode documents
 #+KEYWORDS:  org mode, latex, auctex, key bindings, shortcuts, emulation
 #+LANGUAGE:  en
@@ -83,8 +83,8 @@ important to be offered by this minor mode. Please tell me!
 
 *** Disabled Org mode shortcuts
 
-As there are conflicts between AUCTeX and Org key bindings, whenever this minor
-mode is enabled, you'll temporarily loose the standard behavior of:
+As there are conflicts between AUCTeX and Org key bindings, you'll temporarily
+loose (whenever this minor mode is enabled) the standard behavior of:
 
 | Shortcut | What it ran                    |
 |----------+--------------------------------|
@@ -96,7 +96,7 @@ mode is enabled, you'll temporarily loose the standard behavior of:
 
 Though, you can easily regain them --- without leaving =org-auctex-keys= --- by
 prefixing your keys with one =C-u=. That will call the standard Org command
-without the =C-u= prefix.
+*without* the =C-u= prefix.
 
 In fact, it calls the standard Org command with one less =C-u= prefix; so:
 
@@ -105,7 +105,7 @@ In fact, it calls the standard Org command with one less =C-u= prefix; so:
   argument,
 - =C-u C-u C-u C-c C-s= calls the original =org-schedule= with *two* universal prefix
   arguments,
-- etc. (provided it makes sense)
+- and so on (provided it makes sense)
 
 Another way to access a disabled Org mode shortcut is to disable
 =org-auctex-keys= temporarily, do what you want, and re-enable it; that is, press
