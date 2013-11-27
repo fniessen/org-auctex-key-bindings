@@ -4,7 +4,7 @@
 
 ;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
 ;; URL: https://github.com/fniessen/org-auctex-key-bindings
-;; Version: 20131021.2150
+;; Version: 20131127.2042
 ;; Keywords: org mode, latex, auctex, key bindings, shortcuts, emulation
 
 ;; This file is NOT part of GNU Emacs.
@@ -63,8 +63,8 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
 
 (defvar org-auctex-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "C-c C-s") 'org-auckeys-insert-heading)
-    (define-key map (kbd "C-c C-j") 'org-auckeys-insert-heading-respect-content)
+    (define-key map (kbd "C-c C-s") 'org-auckeys-insert-heading-respect-content)
+    (define-key map (kbd "C-c C-j") 'org-auckeys-insert-heading)
     (define-key map (kbd "C-c C-f") 'org-auckeys-font)
     (define-key map (kbd "C-c C-e") 'org-auckeys-environment)
     (define-key map (kbd "C-c C-c") 'org-auckeys-export-dispatch)
@@ -74,8 +74,8 @@ Use the command `org-auctex-keys-minor-mode' to toggle or set this variable.")
 (easy-menu-define org-auctex-keys-minor-mode-menu org-auctex-keys-minor-mode-map
   "Menu used when Org AUCTeX Keys minor mode is active."
   '("AUCKeys"
-    ["Section" org-auckeys-insert-heading]
-    ["Insert Item" org-auckeys-insert-heading-respect-content]
+    ["Section" org-auckeys-insert-heading-respect-content]
+    ["Insert Item" org-auckeys-insert-heading]
     ("Insert Font"
      ["Emphasize"  (org-auckeys-font ?\C-e) :keys "C-c C-f C-e"]
      ["Bold"       (org-auckeys-font ?\C-b) :keys "C-c C-f C-b"]

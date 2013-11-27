@@ -28,3 +28,21 @@ Just two commands would be sufficient:
 - View, if PDF is newer than Org source file
 
 (And =C-u C-c C-e= would call the original export dispatcher.)
+
+** DONE C-c C-j doe not create new item inside a list (from pprw)
+   :LOGBOOK:
+   - State "TODO"        ->  "DONE"       [2013-11-27 Wed 21:03]
+   :END:
+   [2013-11-26 Tue 14:29]
+
+#+begin_verse
+According to their behaviour in AUCTex, shortcuts C-c C-j and C-c C-s should
+respectively create a new item in a list and create a new title.
+
+With the last version of org-auctex-key-bindings, if I write "1. item" and
+press C-c C-j, I have a new title (for example " *** title") and *not* a new
+item. If I press C-c C-s, I have a new item ("2. ...") instead of having a new
+title. The respective behaviour of both shortcuts should be inverted.
+#+end_verse
+
+From [[gnus:nnimap%2Bmc:INBOX#fniessen/org-auctex-key-bindings/issues/2@github.com][Email from pprw: {org-auctex-key-bindings} C-c ]]

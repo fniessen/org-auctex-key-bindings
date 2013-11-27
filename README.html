@@ -7,7 +7,7 @@
   <meta name="generator" content=
   "HTML Tidy for Cygwin (vers 1st September 2004), see www.w3.org" />
 
-  <title>README</title><!-- 2013-10-22 Tue 09:22 -->
+  <title>README</title><!-- 2013-11-27 Wed 21:04 -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="generator" content="Org-mode" />
   <meta name="author" content="Fabrice Niessen" />
@@ -27,28 +27,27 @@
       <div id="text-table-of-contents">
         <ul>
           <li>
-            <a href="#sec-1">1. org-auctex-key-bindings</a>
+            <a href="#sec-1">org-auctex-key-bindings</a>
 
             <ul>
-              <li><a href="#sec-1-1">1.1. Download</a></li>
+              <li><a href="#sec-1-1">Download</a></li>
 
-              <li><a href="#sec-1-2">1.2. Installation</a></li>
+              <li><a href="#sec-1-2">Installation</a></li>
 
-              <li><a href="#sec-1-3">1.3. Usage</a></li>
+              <li><a href="#sec-1-3">Usage</a></li>
 
               <li>
-                <a href="#sec-1-4">1.4. AUCTeX keyboard shortcuts</a>
+                <a href="#sec-1-4">AUCTeX keyboard shortcuts</a>
 
                 <ul>
-                  <li><a href="#sec-1-4-1">1.4.1. Enabled AUCTeX shortcuts for
-                  Org mode</a></li>
+                  <li><a href="#sec-1-4-1">Enabled AUCTeX shortcuts for Org
+                  mode</a></li>
 
-                  <li><a href="#sec-1-4-2">1.4.2. Disabled Org mode
-                  shortcuts</a></li>
+                  <li><a href="#sec-1-4-2">Disabled Org mode shortcuts</a></li>
                 </ul>
               </li>
 
-              <li><a href="#sec-1-5">1.5. License</a></li>
+              <li><a href="#sec-1-5">License</a></li>
             </ul>
           </li>
         </ul>
@@ -92,15 +91,15 @@ git clone https://github.com/fniessen/org-auctex-key-bindings.git
 
               <div class="org-src-container">
                 <pre class="src src-emacs-lisp">
-<span style="color: #008200;">;; </span><span style=
-"color: #008200; font-style: italic;">make sure `</span><span style=
-"color: #008200; font-style: italic;">org-auctex-key-bindings.el</span><span style="color: #008200; font-style: italic;">' is in your `</span><span style="color: #008200; font-style: italic;">load-path</span><span style="color: #008200; font-style: italic;">'</span>
-(add-to-list 'load-path <span style=
-"color: #FF4700;">"/path/to/org-auctex-key-bindings"</span>)
+  <span style="color: #4C886B;">;; </span><span style=
+"color: #4C886B; font-style: italic;">make sure `</span><span style=
+"color: #4C886B; font-style: italic;">org-auctex-key-bindings.el</span><span style="color: #4C886B; font-style: italic;">' is in your `</span><span style="color: #4C886B; font-style: italic;">load-path</span><span style="color: #4C886B; font-style: italic;">'</span>
+  (add-to-list 'load-path <span style=
+"color: #036A07;">"/path/to/org-auctex-key-bindings"</span>)
 
-<span style="color: #008200;">;; </span><span style=
-"color: #008200; font-style: italic;">require it as normal</span>
-(<span style="color: #0000FF;">require</span> '<span style=
+  <span style="color: #4C886B;">;; </span><span style=
+"color: #4C886B; font-style: italic;">require it as normal</span>
+  (<span style="color: #0000FF;">require</span> '<span style=
 "color: #6434A3;">org-auctex-keys</span>)
 </pre>
               </div>
@@ -177,14 +176,14 @@ M-x org-auctex-keys-minor-mode
                 <tr>
                   <td class="left"><code>C-c C-s</code></td>
 
-                  <td class="left"><code>org-auckeys-insert-heading</code></td>
+                  <td class="left">
+                  <code>org-auckeys-insert-heading-respect-content</code></td>
                 </tr>
 
                 <tr>
                   <td class="left"><code>C-c C-j</code></td>
 
-                  <td class="left">
-                  <code>org-auckeys-insert-heading-respect-content</code></td>
+                  <td class="left"><code>org-auckeys-insert-heading</code></td>
                 </tr>
 
                 <tr>
