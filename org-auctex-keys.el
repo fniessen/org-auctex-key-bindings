@@ -4,7 +4,7 @@
 
 ;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
 ;; URL: https://github.com/fniessen/org-auctex-key-bindings
-;; Version: 20131127.2042
+;; Version: 20131208.2232
 ;; Keywords: org mode, latex, auctex, key bindings, shortcuts, emulation
 
 ;; This file is NOT part of GNU Emacs.
@@ -24,7 +24,7 @@
 
 ;;; Commentary:
 
-;; This minor modes implements many AUCTeX key bindings in Org documents!
+;; This minor mode implements many AUCTeX key bindings in Org documents!
 ;; ... a killer feature to ease the conversion of LaTeX users to Org mode.
 ;;
 ;; To use it, put the following in your Emacs configuration file:
