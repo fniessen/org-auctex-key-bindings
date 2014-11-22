@@ -1,14 +1,13 @@
 #+AUTHOR:    Fabrice Niessen
 #+EMAIL:     (concat "fniessen" at-sign "pirilampo.org")
 #+DATE:      2012-06-22
-#+Time-stamp: <2013-11-27 Wed 21:04>
 #+DESCRIPTION: Implement many AUCTeX key bindings for Org mode documents
 #+KEYWORDS:  org mode, latex, auctex, key bindings, shortcuts, emulation
 #+LANGUAGE:  en
 
 #+PROPERTY:  eval no
 
-* org-auctex-key-bindings
+* org-auctex-key-bindings [[http://opensource.org/licenses/GPL-3.0][http://img.shields.io/:license-gpl-blue.svg]] [[https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=VCVAS6KPDQ4JC&lc=BE&item_number=org%2dauctex%2dkey%2dbindings&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted][https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif]]
 
 Implement many AUCTeX key bindings for Org mode documents, by giving them an
 "Org equivalent" or Org-like effect.
@@ -111,8 +110,41 @@ Another way to access a disabled Org mode shortcut is to disable
 =org-auctex-keys= temporarily, do what you want, and re-enable it; that is, press
 =C-+ C-c C-s C-+= to call the original =org-schedule=.
 
+** Contributing
+
+*** Issues
+
+Report issues and suggest features and improvements on the [[https://github.com/fniessen/org-auctex-key-bindings/issues/new][GitHub issue tracker]].
+
+*** Patches
+
+I love contributions!  Patches under any form are always welcome!
+
+*** Donations
+
+If you like the org-auctex-key-bindings project, you can show your appreciation and
+support future development by making a [[https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=VCVAS6KPDQ4JC&lc=BE&item_number=org%2dauctex%2dkey%2dbindings&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted][donation]] through PayPal.
+
+Regardless of the donations, org-auctex-key-bindings will always be free both as in
+beer and as in speech.
+
 ** License
 
-Copyright (C) 2013 Fabrice Niessen
+Copyright (C) 2013-2014 Free Software Foundation, Inc.
+
+Author: Fabrice Niessen \\
+Keywords: auctex key bindings org-mode
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see http://www.gnu.org/licenses/.
 
 #  LocalWords:  Fabrice Niessen Org org AUCTeX auctex

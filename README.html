@@ -1,4 +1,4 @@
-<!-- <xml version="1.0"> -->
+<!-- <xml version="1.0" encoding="utf-8"> -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -7,7 +7,7 @@
   <meta name="generator" content=
   "HTML Tidy for Cygwin (vers 1st September 2004), see www.w3.org" />
 
-  <title>README</title><!-- 2013-11-27 Wed 21:04 -->
+  <title></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="generator" content="Org-mode" />
   <meta name="author" content="Fabrice Niessen" />
@@ -19,7 +19,7 @@
 
 <body>
   <div id="content">
-    <h1 class="title">README</h1>
+    <h1 class="title"></h1>
 
     <div id="table-of-contents">
       <h2>Table of Contents</h2>
@@ -27,27 +27,40 @@
       <div id="text-table-of-contents">
         <ul>
           <li>
-            <a href="#sec-1">org-auctex-key-bindings</a>
+            <a href="#sec-1">1. org-auctex-key-bindings</a>
 
             <ul>
-              <li><a href="#sec-1-1">Download</a></li>
+              <li><a href="#sec-1-1">1.1. Download</a></li>
 
-              <li><a href="#sec-1-2">Installation</a></li>
+              <li><a href="#sec-1-2">1.2. Installation</a></li>
 
-              <li><a href="#sec-1-3">Usage</a></li>
+              <li><a href="#sec-1-3">1.3. Usage</a></li>
 
               <li>
-                <a href="#sec-1-4">AUCTeX keyboard shortcuts</a>
+                <a href="#sec-1-4">1.4. AUCTeX keyboard shortcuts</a>
 
                 <ul>
-                  <li><a href="#sec-1-4-1">Enabled AUCTeX shortcuts for Org
-                  mode</a></li>
+                  <li><a href="#sec-1-4-1">1.4.1. Enabled AUCTeX shortcuts for
+                  Org mode</a></li>
 
-                  <li><a href="#sec-1-4-2">Disabled Org mode shortcuts</a></li>
+                  <li><a href="#sec-1-4-2">1.4.2. Disabled Org mode
+                  shortcuts</a></li>
                 </ul>
               </li>
 
-              <li><a href="#sec-1-5">License</a></li>
+              <li>
+                <a href="#sec-1-5">1.5. Contributing</a>
+
+                <ul>
+                  <li><a href="#sec-1-5-1">1.5.1. Issues</a></li>
+
+                  <li><a href="#sec-1-5-2">1.5.2. Patches</a></li>
+
+                  <li><a href="#sec-1-5-3">1.5.3. Donations</a></li>
+                </ul>
+              </li>
+
+              <li><a href="#sec-1-6">1.6. License</a></li>
             </ul>
           </li>
         </ul>
@@ -56,7 +69,14 @@
 
     <div id="outline-container-sec-1" class="outline-2">
       <h2 id="sec-1"><span class="section-number-2">1</span>
-      org-auctex-key-bindings</h2>
+      org-auctex-key-bindings <a href=
+      "http://opensource.org/licenses/GPL-3.0"><object type="image/svg+xml"
+      data="http://img.shields.io/:license-gpl-blue.svg">
+        Sorry, your browser does not support SVG.
+      </object></a> <a href=
+      "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=VCVAS6KPDQ4JC&amp;lc=BE&amp;item_number=org-auctex-key-bindings&amp;currency_code=EUR&amp;bn=PP-DonationsBF:btn_donate_LG.gif:NonHosted">
+      <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+      alt="btn_donate_LG.gif" /></a></h2>
 
       <div class="outline-text-2" id="text-1">
         <p>Implement many AUCTeX key bindings for Org mode documents, by giving
@@ -86,21 +106,24 @@ git clone https://github.com/fniessen/org-auctex-key-bindings.git
 
         <div class="outline-text-3" id="text-1-2">
           <ul class="org-ul">
-            <li>Install <a href=
-            "https://github.com/fniessen/org-auctex-key-bindings">org-auctex-key-bindings</a>:
+            <li>
+              <p>Install <a href=
+              "https://github.com/fniessen/org-auctex-key-bindings">org-auctex-key-bindings</a>:</p>
 
               <div class="org-src-container">
                 <pre class="src src-emacs-lisp">
-  <span style="color: #4C886B;">;; </span><span style=
-"color: #4C886B; font-style: italic;">make sure `</span><span style=
-"color: #4C886B; font-style: italic;">org-auctex-key-bindings.el</span><span style="color: #4C886B; font-style: italic;">' is in your `</span><span style="color: #4C886B; font-style: italic;">load-path</span><span style="color: #4C886B; font-style: italic;">'</span>
-  (add-to-list 'load-path <span style=
-"color: #036A07;">"/path/to/org-auctex-key-bindings"</span>)
+<span class="org-comment-delimiter">;; </span><span class=
+"org-comment">make sure `</span><span class="org-constant"><span class=
+"org-comment">org-auctex-key-bindings.el</span></span><span class=
+"org-comment">' is in your `</span><span class="org-constant"><span class=
+"org-comment">load-path</span></span><span class="org-comment">'</span>
+(add-to-list 'load-path <span class=
+"org-string">"/path/to/org-auctex-key-bindings"</span>)
 
-  <span style="color: #4C886B;">;; </span><span style=
-"color: #4C886B; font-style: italic;">require it as normal</span>
-  (<span style="color: #0000FF;">require</span> '<span style=
-"color: #6434A3;">org-auctex-keys</span>)
+<span class="org-comment-delimiter">;; </span><span class=
+"org-comment">require it as normal</span>
+(<span class="org-keyword">require</span> '<span class=
+"org-constant">org-auctex-keys</span>)
 </pre>
               </div>
             </li>
@@ -323,18 +346,82 @@ M-x org-auctex-keys-minor-mode
       </div>
 
       <div id="outline-container-sec-1-5" class="outline-3">
-        <h3 id="sec-1-5"><span class="section-number-3">1.5</span> License</h3>
+        <h3 id="sec-1-5"><span class="section-number-3">1.5</span>
+        Contributing</h3>
 
-        <div class="outline-text-3" id="text-1-5">
-          <p>Copyright (C) 2013 Fabrice Niessen</p>
+        <div class="outline-text-3" id="text-1-5"></div>
+
+        <div id="outline-container-sec-1-5-1" class="outline-4">
+          <h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span>
+          Issues</h4>
+
+          <div class="outline-text-4" id="text-1-5-1">
+            <p>Report issues and suggest features and improvements on the
+            <a href=
+            "https://github.com/fniessen/org-auctex-key-bindings/issues/new">GitHub
+            issue tracker</a>.</p>
+          </div>
+        </div>
+
+        <div id="outline-container-sec-1-5-2" class="outline-4">
+          <h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span>
+          Patches</h4>
+
+          <div class="outline-text-4" id="text-1-5-2">
+            <p>I love contributions! Patches under any form are always
+            welcome!</p>
+          </div>
+        </div>
+
+        <div id="outline-container-sec-1-5-3" class="outline-4">
+          <h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span>
+          Donations</h4>
+
+          <div class="outline-text-4" id="text-1-5-3">
+            <p>If you like the org-auctex-key-bindings project, you can show
+            your appreciation and support future development by making a
+            <a href=
+            "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=VCVAS6KPDQ4JC&amp;lc=BE&amp;item_number=org-auctex-key-bindings&amp;currency_code=EUR&amp;bn=PP-DonationsBF:btn_donate_LG.gif:NonHosted">
+            donation</a> through PayPal.</p>
+
+            <p>Regardless of the donations, org-auctex-key-bindings will always
+            be free both as in beer and as in speech.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="outline-container-sec-1-6" class="outline-3">
+        <h3 id="sec-1-6"><span class="section-number-3">1.6</span> License</h3>
+
+        <div class="outline-text-3" id="text-1-6">
+          <p>Copyright (C) 2013-2014 Free Software Foundation, Inc.</p>
+
+          <p>Author: Fabrice Niessen<br />
+          Keywords: auctex key bindings org-mode</p>
+
+          <p>This program is free software; you can redistribute it and/or
+          modify it under the terms of the GNU General Public License as
+          published by the Free Software Foundation, either version 3 of the
+          License, or (at your option) any later version.</p>
+
+          <p>This program is distributed in the hope that it will be useful,
+          but WITHOUT ANY WARRANTY; without even the implied warranty of
+          MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+          General Public License for more details.</p>
+
+          <p>You should have received a copy of the GNU General Public License
+          along with this program. If not, see <a href=
+          "http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
         </div>
       </div>
     </div>
   </div>
 
   <div id="postamble" class="status">
-    <div id="copyright">
-      © 2012-06-22 Fabrice Niessen
+    <div id="footer">
+      <div id="copyright">
+        Copyright © 2012-06-22 Fabrice Niessen
+      </div>
     </div>
   </div>
 </body>
