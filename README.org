@@ -5,7 +5,7 @@
 #+KEYWORDS:  org mode, latex, auctex, key bindings, shortcuts, emulation
 #+LANGUAGE:  en
 
-#+PROPERTY:  eval no
+#+PROPERTY:  header-args :eval no
 
 * org-auctex-key-bindings [[http://opensource.org/licenses/GPL-3.0][http://img.shields.io/:license-gpl-blue.svg]] [[https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=VCVAS6KPDQ4JC&lc=BE&item_number=org%2dauctex%2dkey%2dbindings&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted][https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif]]
 
@@ -122,15 +122,16 @@ I love contributions!  Patches under any form are always welcome!
 
 *** Donations
 
-If you like the org-auctex-key-bindings project, you can show your appreciation and
-support future development by making a [[https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=VCVAS6KPDQ4JC&lc=BE&item_number=org%2dauctex%2dkey%2dbindings&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted][donation]] through PayPal.
+If you like the org-auctex-key-bindings project and feel it is making your life
+better and easier, you can show your appreciation and help support future
+development by making a [[https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=VCVAS6KPDQ4JC&lc=BE&item_number=org%2dauctex%2dkey%2dbindings&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted][donation]] through PayPal.  Thank you!
 
-Regardless of the donations, org-auctex-key-bindings will always be free both as in
-beer and as in speech.
+Regardless of the donations, org-auctex-key-bindings will always be free both as
+in beer and as in speech.
 
 ** License
 
-Copyright (C) 2013-2014 Free Software Foundation, Inc.
+Copyright (C) 2013-2017 Free Software Foundation, Inc.
 
 Author: Fabrice Niessen \\
 Keywords: auctex key bindings org-mode
