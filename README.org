@@ -131,7 +131,7 @@ in beer and as in speech.
 
 ** License
 
-Copyright (C) 2013-2017 Free Software Foundation, Inc.
+Copyright (C) 2013-2021 Free Software Foundation, Inc.
 
 Author: Fabrice Niessen \\
 Keywords: auctex key bindings org-mode
