@@ -1,16 +1,16 @@
 * Tasks
 
 ** DONE Add a key binding to turn on/off the minor mode
-   :LOGBOOK:
-   - State "TODO"        ->  "DONE"       [2013-10-12 Sat 09:47]
-   :END:
+:LOGBOOK:
+- State "TODO"        ->  "DONE"       [2013-10-12 Sat 09:47]
+:END:
 
 Added =C-+= to toggle AUCKeys on/off.
 
 ** DONE Re-enable default Org key bindings with =C-u=
-   :LOGBOOK:
-   - State "TODO"        ->  "DONE"       [2013-10-21 Mon 21:55]
-   :END:
+:LOGBOOK:
+- State "TODO"        ->  "DONE"       [2013-10-21 Mon 21:55]
+:END:
 
 So, =C-c C-s= will insert a new heading when AUCKeys in enabled, but =C-u C-c C-s=
 would call the standard Org =C-c C-s= function.
@@ -18,9 +18,9 @@ would call the standard Org =C-c C-s= function.
 See http://stackoverflow.com/questions/19338494/how-to-call-original-function-with-one-less-c-u
 
 ** DONE Make a AUCTeX-like export dispatcher
-   :LOGBOOK:
-   - State "TODO"        ->  "DONE"       [2013-10-12 Sat 10:34]
-   :END:
+:LOGBOOK:
+- State "TODO"        ->  "DONE"       [2013-10-12 Sat 10:34]
+:END:
 
 Just two commands would be sufficient:
 
@@ -30,10 +30,10 @@ Just two commands would be sufficient:
 (And =C-u C-c C-e= would call the original export dispatcher.)
 
 ** DONE C-c C-j doe not create new item inside a list (from pprw)
-   :LOGBOOK:
-   - State "TODO"        ->  "DONE"       [2013-11-27 Wed 21:03]
-   :END:
-   [2013-11-26 Tue 14:29]
+:LOGBOOK:
+- State "TODO"        ->  "DONE"       [2013-11-27 Wed 21:03]
+:END:
+[2013-11-26 Tue 14:29]
 
 #+begin_verse
 According to their behaviour in AUCTex, shortcuts C-c C-j and C-c C-s should
