@@ -1,10 +1,10 @@
 ;;; org-auctex-keys.el --- Support of many AUCTeX key bindings for Org documents
 
-;; Copyright (C) 2013 Fabrice Niessen
+;; Copyright (C) 2013-2024 Fabrice Niessen
 
 ;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
 ;; URL: https://github.com/fniessen/org-auctex-key-bindings
-;; Version: 20131208.2232
+;; Version: 20241005.1359
 ;; Keywords: org mode, latex, auctex, key bindings, shortcuts, emulation
 
 ;; This file is NOT part of GNU Emacs.
@@ -213,27 +213,35 @@ PRINT-FUN is used to show them in the minibuffer prompt -- by default, this is
       collection))))
 
 (defun org-auckeys-environment (&optional arg)
-  "Insert TEMPLATE at point.
+  "Insert an Org mode TEMPLATE at point, based on the user's choice.
 
-Interactively, TEMPLATE is an element from `org-structure-template-alist'.
+When called interactively, it prompts the user to select an
+environment TEMPLATE from `org-structure-template-alist`.
 
-With a prefix argument, use the standard command bound to `C-c C-e'."
+With a prefix argument, it runs the standard `org-export-dispatch` function
+(bound to `C-x C-e')."
   (interactive "p")
   (if (= arg 1)
-      (let ((template
-             (org-auckeys-completing-read
-              "Environment: "
-              org-structure-template-alist
-              (lambda (cell)
-                (let ((template (cadr cell)))
-                  (if (string-match "\\`[^ \n]+" template)
-                      (match-string 0 template)
-                    template))))))
-        (if template
-            (org-complete-expand-structure-template (point) template)
-          (message "Template not found in `org-structure-template-alist'")))
-    ;; original function
-    (funcall 'org-export-dispatch (/ arg 4))))
+      (let* ((template
+              (org-auckeys-completing-read
+               "Select environment: "
+               org-structure-template-alist))
+             (selected-template
+              (cdr (assoc template org-structure-template-alist))))
+        (if selected-template
+            (org-insert-structure-template selected-template)
+          (message "Template not found in `org-structure-template-alist`.")))
+    ;; Original function.
+    (funcall 'org-export-dispatch (/ arg 4)))
+  )
+
+(defun org-auckeys-completing-read (prompt collection)
+  "Use `completing-read' to select a template based on its description.
+PRESENTATION is the list of (KEY . VALUE) pairs in COLLECTION."
+  (let* ((choices (mapcar 'cdr collection)) ; Get only the values (descriptions)
+         (keys (mapcar 'car collection)) ; Get only the keys
+         (selected (completing-read prompt choices nil t)))
+    (nth (cl-position selected choices :test 'equal) keys)))
 
 (defun org-auckeys-export-dispatch (&optional arg)
   "Export to PDF or open the PDF file, depending on whether the file is up to date.
