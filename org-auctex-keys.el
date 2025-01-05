@@ -1,10 +1,10 @@
 ;;; org-auctex-keys.el --- Support of many AUCTeX key bindings for Org documents
 
-;; Copyright (C) 2013-2024 Fabrice Niessen
+;; Copyright (C) 2013-2024 Fabrice Niessen. All rights reserved.
 
 ;; Author: Fabrice Niessen <(concat "fniessen" at-sign "pirilampo.org")>
 ;; URL: https://github.com/fniessen/org-auctex-key-bindings
-;; Version: 20241005.1359
+;; Version: 20250105.1203
 ;; Keywords: org mode, latex, auctex, key bindings, shortcuts, emulation
 
 ;; This file is NOT part of GNU Emacs.
